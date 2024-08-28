@@ -195,7 +195,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: 64px; /* Adjust this value based on your app bar height */
+  padding-top: 64px;
 }
 
 .underline {
