@@ -52,7 +52,8 @@
       <h2 style="display: flex; justify-content: center;" class="mb-6">Projects</h2>
       <v-row class="mb-4" style="display: flex; justify-content: center;">
         <v-col cols="12" md="3" style="height: 50%">
-          <v-card class="project-card pa-4"  style="height: 550px !important">
+          <v-card class="project-card pa-4"  style="min-height: 550px;
+    max-height: 650px;">
             <v-img
               :src="projectImage1"
               alt="Project Image 1"
@@ -69,7 +70,8 @@
           </v-card>
         </v-col>
         <v-col cols="12" md="3">
-          <v-card class="project-card pa-4"  style="height: 550px !important">
+          <v-card class="project-card pa-4"  style="min-height: 550px;
+    max-height: 650px;">
             <v-img
               :src="projectImage2"
               alt="Portfolio"
@@ -88,7 +90,8 @@
           </v-card>
         </v-col>
         <v-col cols="12" md="3" >
-          <v-card class="project-card pa-4" style="height: 550px !important" >
+          <v-card class="project-card pa-4" style="min-height: 550px;
+    max-height: 650px;" >
             <v-img
               :src="projectImage3"
               alt="Project Image 3"
