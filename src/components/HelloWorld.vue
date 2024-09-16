@@ -456,7 +456,7 @@ onMounted(() => {
   position: absolute;
   width: 5px;
   height: 5px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(83, 109, 254, 0.8);
   border-radius: 50%;
   animation: move 5s linear infinite;
   opacity: 0;
