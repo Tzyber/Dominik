@@ -45,8 +45,35 @@
           </v-col>
         </v-row>
       </section>
-      <hr />
+      <hr  id="skills"/>
     </div>
+    <div> 
+    <h2 class="aboutMe mb-6 mt-6" >Skills</h2>
+    <div class="custom-grid">
+    <div v-for="n in skills" :key="n.name"  :class="'custom-card'">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="grey" class="custom-svg top-left">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="grey" class="custom-svg bottom-left">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="grey" class="custom-svg top-right">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="grey" class="custom-svg bottom-right">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6"></path>
+      </svg>
+      <div  style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;">
+      <p>{{ n.name }}</p>
+      <div class="image-container mt-3">
+      <v-img :src="n.image" max-width="100" max-height="100"></v-img>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <hr class="mt-6" />
+
 
     <!-- Projects section -->
 <section id="projects" class="mb-16 section">
@@ -150,6 +177,42 @@ import projectImage3 from '@/assets/netflix.jpeg';
 import me from '@/assets/me.png';
 
 const route = useRoute();
+
+const skills = [
+  { name: "Vue.js", image: 'src/assets/pngegg.png' },
+  { name: "Typescript", image: 'src/assets/ts.png'},
+  { name: "Css", image: 'src/assets/css.png' },
+  { name: "Git", image: 'src/assets/git.png' },
+  { name: "Npm", image: 'src/assets/npm.png' },
+  { name: "Vuetify", image: 'src/assets/vuetify2.png' }
+];
+
+
+onMounted(() => {
+  const cards = document.querySelectorAll('.custom-card');
+
+  cards.forEach(card => {
+    // Element ist ein HTML-Element 
+    const cardElement = card as HTMLElement;
+
+    cardElement.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = cardElement.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      // Verwendung einer  CSS-Variable für die Position des "Spotlight"
+      cardElement.style.setProperty('--mouse-x', `${x}px`);
+      cardElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    cardElement.addEventListener('mouseleave', () => {
+      // Entferne des  Effekt beim Verlassen des Elements
+      cardElement.style.setProperty('--mouse-x', `-9999px`);
+      cardElement.style.setProperty('--mouse-y', `-9999px`);
+    });
+  });
+});
+
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId);
@@ -259,4 +322,112 @@ onMounted(() => {
   text-decoration: none;
   box-shadow: inset 0 -3px 0 rgba(83, 109, 254, 1);
 }
+
+.custom-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.custom-card {
+  position: relative;
+  display: flex;
+  height: 13rem;
+  width: 100%;
+  max-width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+
+  transition: all 0.3s ease-in-out;
+
+
+  @media (prefers-color-scheme: dark) {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  @media (prefers-color-scheme: dark) {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+   p {
+    position: relative;
+    z-index: 2;
+  }
+}
+.custom-card::before {
+  content: "";
+  position: absolute;
+  top: var(--mouse-y, 50%);
+  left: var(--mouse-x, 50%);
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(83, 109, 254, 0.6) 10%, transparent 60%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.custom-card:hover::before {
+  opacity: 0.5; /* Effekt beim Hover anzeigen */
+}
+
+.image-container {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.custom-card:hover .image-container {
+  opacity: .4;
+}
+
+
+.custom-svg {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: black;
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+
+  &.top-left {
+    top: -0.75rem;
+    left: -0.75rem;
+  }
+
+  &.bottom-left {
+    bottom: -0.75rem;
+    left: -0.75rem;
+  }
+
+  &.top-right {
+    top: -0.75rem;
+    right: -0.75rem;
+  }
+
+  &.bottom-right {
+    bottom: -0.75rem;
+    right: -0.75rem;
+  }
+}
+
+
+
+
 </style>

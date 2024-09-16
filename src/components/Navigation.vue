@@ -19,8 +19,10 @@ import { ref } from 'vue';
 const items = ref([
   { title: 'Home', id: 'home' },
   { title: 'About', id: 'about' },
-   { title: 'Projects', id: 'projects' },
+  { title: 'skills', id: 'skills' },
+  { title: 'Projects', id: 'projects' },
   { title: 'Contact', id: 'contact' },
+
 ]);
 </script>
 
