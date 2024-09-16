@@ -1,26 +1,34 @@
 <template>
   <v-container>
-    <section id="home" class="mb-4 section">
-      <v-row align="center" justify="center">
-        <v-col cols="6" md="5">
-          <h2 class="typewriter text-h4 font-weight-bold mb-6" ref="typewriterElement"></h2>
-          <h1 class="text-h3 mb-4">My name is Dominik</h1>
-          <h2 class="text-h5">
-            I am a <span class="underline">Web Developer</span> <br>
-            Currently based in Wuppertal, Germany
-          </h2>
-        </v-col>
-        <v-col cols="12" md="6" class="text-center">
-          <v-avatar size="300">
-            <v-img
-              :src="me"
-              alt="Dominik's profile picture"
-            ></v-img>
-          </v-avatar>
-        </v-col>
-      </v-row>
-    </section>
+    <section id="home" class="mb-4 section" style="position: relative; overflow: hidden;">
 
+  <v-row align="center" justify="center">
+    <v-col cols="6" md="5">
+      <h2 class="typewriter text-h4 font-weight-bold mb-6" ref="typewriterElement"></h2>
+      <h1 class="text-h3 mb-4">My name is Dominik</h1>
+      <h2 class="text-h5">
+        I am a <span class="underline">Web Developer</span> <br>
+        Currently based in Wuppertal, Germany
+      </h2>
+    </v-col>
+    <v-col cols="12" md="6" class="text-center">
+      <v-avatar size="300">
+        <v-img :src="me" alt="Dominik's profile picture"></v-img>
+      </v-avatar>
+    </v-col>
+  </v-row>
+</section>
+  <!-- Particle animation background -->
+<div class="particles-background" v-if="particleVisible">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
     <!-- About section -->
     <div class="col-sm-4 col-md-5 col-6" id="about">
       <hr />
@@ -182,8 +190,9 @@ import npm from "@/assets/npm.png"
 import vuetify from "@/assets/vuetify2.png"
 import me from '@/assets/me.png';
 
-const route = useRoute();
-
+const route = useRoute(); 
+const globalState = inject("globalState") as { particleVisible: boolean };
+const particleVisible = computed(() => globalState.particleVisible);
 const skills = [
   { name: "Vue.js", image: vue },
   { name: "Typescript", image: typescript},
@@ -433,7 +442,94 @@ onMounted(() => {
   }
 }
 
+.particles-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
+  overflow: hidden;
+}
+
+.particles-background .particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: move 5s linear infinite;
+  opacity: 0;
+}
+
+
+.particles-background .particle:nth-child(1) {
+  top: 10%;
+  left: 30%;
+  animation-delay: 0s;
+  animation-duration: 5s;
+}
+
+.particles-background .particle:nth-child(2) {
+  top: 20%;
+  left: 50%;
+  animation-delay: 1s;
+  animation-duration: 4s;
+}
+
+.particles-background .particle:nth-child(3) {
+  top: 30%;
+  left: 80%;
+  animation-delay: 1.5s;
+  animation-duration: 3.5s;
+}
+
+.particles-background .particle:nth-child(4) {
+  top: 40%;
+  left: 10%;
+  animation-delay: 0.8s;
+  animation-duration: 3s;
+}
+
+.particles-background .particle:nth-child(5) {
+  top: 50%;
+  left: 60%;
+  animation-delay: 2s;
+  animation-duration: 2.5s;
+}
+
+.particles-background .particle:nth-child(6) {
+  top: 60%;
+  left: 40%;
+  animation-delay: 2.5s;
+  animation-duration: 2s;
+}
+
+.particles-background .particle:nth-child(7) {
+  top: 70%;
+  left: 20%;
+  animation-delay: 1s;
+  animation-duration: 4.5s;
+}
+
+.particles-background .particle:nth-child(8) {
+  top: 80%;
+  left: 75%;
+  animation-delay: 1.5s;
+  animation-duration: 5s;
+}
+
+/* Define the animation movement */
+@keyframes move {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+}
 
 
 </style>

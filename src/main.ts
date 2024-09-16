@@ -1,20 +1,16 @@
-/**
- * main.ts
- *
- * Bootstraps Vuetify and other plugins then mounts the App`
- */
+import { createApp, reactive } from 'vue';
+import App from './App.vue';
+import { registerPlugins } from '@/plugins';
 
-// Plugins
-import { registerPlugins } from '@/plugins'
+const app = createApp(App);
 
-// Components
-import App from './App.vue'
+// Create a global reactive state
+const state = reactive({
+  particleVisible: false
+});
 
-// Composables
-import { createApp } from 'vue'
+// Provide the global state to the app
+app.provide("globalState", state);
 
-const app = createApp(App)
-
-registerPlugins(app)
-
-app.mount('#app')
+registerPlugins(app);
+app.mount('#app');
