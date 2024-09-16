@@ -179,12 +179,12 @@ import me from '@/assets/me.png';
 const route = useRoute();
 
 const skills = [
-  { name: "Vue.js", image: 'src/assets/pngegg.png' },
-  { name: "Typescript", image: 'src/assets/ts.png'},
-  { name: "Css", image: 'src/assets/css.png' },
-  { name: "Git", image: 'src/assets/git.png' },
-  { name: "Npm", image: 'src/assets/npm.png' },
-  { name: "Vuetify", image: 'src/assets/vuetify2.png' }
+  { name: "Vue.js", image: '@/assets/pngegg.png' },
+  { name: "Typescript", image: '@/assets/ts.png'},
+  { name: "Css", image: '@/assets/css.png' },
+  { name: "Git", image: '@/assets/git.png' },
+  { name: "Npm", image: '@/assets/npm.png' },
+  { name: "Vuetify", image: '@/assets/vuetify2.png' }
 ];
 
 
