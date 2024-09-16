@@ -133,7 +133,7 @@
             <h3>Netflix Recreation</h3>
             <br>
             <p>My small Recreation of Netflix. there might still be some Bugs but those will be resolved in the future. Github Pages is a bit picky with images.</p>
-            <div class="mt-2"> <p><a class="links" href="https://github.com/Tzyber/netflix-clone/tree/main" target="_blank">Check Demo Here</a></p> or<p><a class="links" href="https://github.com/Tzyber/netflix-clone" target="_blank">Check Code Here</a></p></div>
+            <div class="mt-2"> <p><a class="links" href="https://tzyber.github.io/netflix-clone/" target="_blank">Check Demo Here</a></p> or<p><a class="links" href="https://github.com/Tzyber/netflix-clone/tree/main" target="_blank">Check Code Here</a></p></div>
             <div class="mt-2">
             <v-chip class="mr-2">typescript</v-chip>
             <v-chip class="mr-2">tailwind</v-chip>
