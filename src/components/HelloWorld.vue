@@ -174,17 +174,23 @@ import { useRoute } from 'vue-router';
 import projectImage1 from '@/assets/twitchbot.jpeg';
 import projectImage2 from '@/assets/portfolio.jpeg';
 import projectImage3 from '@/assets/netflix.jpeg';
+import vue from "@/assets/pngegg.png"
+import typescript from "@/assets/ts.png"
+import css from "@/assets/css.png"
+import git from "@/assets/git.png"
+import npm from "@/assets/npm.png"
+import vuetify from "@/assets/vuetify2.png"
 import me from '@/assets/me.png';
 
 const route = useRoute();
 
 const skills = [
-  { name: "Vue.js", image: '/assets/pngegg.png' },
-  { name: "Typescript", image: '/assets/ts.png'},
-  { name: "Css", image: '/assets/css.png' },
-  { name: "Git", image: '/assets/git.png' },
-  { name: "Npm", image: '/assets/npm.png' },
-  { name: "Vuetify", image: '/assets/vuetify2.png' }
+  { name: "Vue.js", image: vue },
+  { name: "Typescript", image: typescript},
+  { name: "Css", image: css },
+  { name: "Git", image: git },
+  { name: "Npm", image: npm },
+  { name: "Vuetify", image: vuetify }
 ];
 
 
