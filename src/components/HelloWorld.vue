@@ -519,7 +519,6 @@ onMounted(() => {
   animation-duration: 5s;
 }
 
-/* Define the animation movement */
 @keyframes move {
   0% {
     transform: translateY(0);
