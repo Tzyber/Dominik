@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-main>
       <Navigation />
      <HelloWorld/>
@@ -10,3 +10,6 @@
 <script lang="ts" setup>
   
 </script>
+
+<style lang="css">
+</style>

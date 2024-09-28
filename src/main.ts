@@ -6,7 +6,7 @@ const app = createApp(App);
 
 // Create a global reactive state
 const state = reactive({
-  particleVisible: false
+  particleVisible: true
 });
 
 // Provide the global state to the app

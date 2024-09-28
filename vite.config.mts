@@ -37,16 +37,15 @@ export default defineConfig({
     Vue({
       template: { transformAssetUrls },
     }),
-    // https://github.com/vuetifyjs/vuetify-loader/tree/master/packages/vite-plugin#readme
     Vuetify({
       autoImport: true,
       styles: {
-        configFile: 'src/styles/settings.scss',
+        configFile: 'src/styles/global.scss',
       },
     }),
     Fonts({
       google: {
-        families: [ {
+        families: [{
           name: 'Roboto',
           styles: 'wght@100;300;400;500;700;900',
         }],
@@ -67,6 +66,14 @@ export default defineConfig({
       '.tsx',
       '.vue',
     ],
+  },
+  // Hier den globalen SCSS-Import hinzufügen
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "@/styles/global.scss";` // Pfad zur globalen SCSS-Datei
+      },
+    },
   },
   server: {
     port: 3000,
