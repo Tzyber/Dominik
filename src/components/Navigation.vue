@@ -9,9 +9,8 @@
     >
       {{ item.title }}
     </v-btn>
-    <v-switch style="display: flex;" color="#536dfe"  v-model="particleVisible"> </v-switch>
-    <span class="ml-2" v-if="particleVisible === true"> Particles active</span>
-    <span class="ml-2" v-else> Particles off</span>
+    <v-switch style="display: flex;" color="#536dfe" v-model="particleVisible"> </v-switch>
+    <span class="ml-2">{{ particleVisible ? 'Particles active' : 'Particles off' }}</span>
   </v-app-bar>
 </template>
 
@@ -19,14 +18,14 @@
 import { ref, inject, watch } from 'vue';
 
 const globalState = inject('globalState') as { particleVisible: boolean };
+if (!globalState) throw new Error('Global state not found');
 
-if (!globalState) {
-  throw new Error('Global state not found');
-}
-
-const particleVisible = ref(globalState.particleVisible);
+const particleVisible = ref(
+  localStorage.getItem("localParticles") === "true"
+);
 
 watch(particleVisible, (newValue) => {
+  localStorage.setItem("localParticles", newValue.toString());
   globalState.particleVisible = newValue;
 }, { immediate: true });
 

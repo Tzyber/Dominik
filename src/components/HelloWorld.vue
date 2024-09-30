@@ -2,67 +2,67 @@
   <v-container>
     <section id="home" class="mb-4 section" style="position: relative; overflow: hidden;">
       <div style="height: 100px;">
-       <v-img :src="moon" style="height: 100px; width: 100px;"></v-img>
+        <v-img :src="moon" style="height: 100px; width: 100px;"></v-img>
       </div>
 
-  <v-row align="center" justify="center">
-    <v-col cols="6" md="5">
-      <h2 class="typewriter text-h4 font-weight-bold mb-6" ref="typewriterElement"></h2>
-      <h1 class="text-h3 mb-4">My name is Dominik</h1>
-      <h2 class="text-h5">
-        I am a <span class="underline">Web Developer</span> <br>
-        Currently based in Wuppertal, Germany
-      </h2>
-    </v-col>
-    <v-col cols="12" md="6" class="text-center">
-      <v-avatar size="300">
-        <v-img :src="me" alt="Dominik's profile picture"></v-img>
-      </v-avatar>
-    </v-col>
-  </v-row>
-</section>
-  <!-- Particle animation background -->
-<Particles></Particles>
+      <v-row align="center" justify="center">
+        <v-col cols="6" md="5">
+          <h2 class="typewriter text-h4 font-weight-bold mb-6" ref="typewriterElement"></h2>
+          <h1 class="text-h3 mb-4">My name is Dominik</h1>
+          <h2 class="text-h5">
+            I am a <span class="underline">Web Developer</span> <br>
+            Currently based in Wuppertal, Germany
+          </h2>
+        </v-col>
+        <v-col cols="12" md="6" class="text-center">
+          <v-avatar size="300">
+            <v-img :src="me" alt="Dominik's profile picture"></v-img>
+          </v-avatar>
+        </v-col>
+      </v-row>
+    </section>
+
+    <!-- Particle animation background -->
+    <Particles></Particles>
+
     <!-- About section -->
     <div class="col-sm-4 col-md-5 col-6" id="about">
       <div style="display: grid; justify-content: end; margin-bottom: -65px;">
         <v-img style="width: 200px" :src="astronaut"></v-img>
       </div>
       <hr />
-      <section class="mb-12 mt-12" >
-        <h2 class="aboutMe mb-6" >About me</h2>
+      <section class="mb-12 mt-12">
+        <h2 class="aboutMe mb-6">About me</h2>
         <v-row>
           <v-col cols="12" md="6">
             <v-card class="pa-4">
               <h3>About Me</h3>
-              <p>I am a web developer from Wuppertal. </p>
+              <p>I am a web developer from Wuppertal.</p>
               <p>I work with modern technologies like TypeScript, Vue, Tailwind, Vuetify, and PrimeVue to create engaging and functional web applications.</p>
-            <br>
             </v-card>
           </v-col>
           <v-col cols="12" md="6">
             <v-card class="pa-4">
               <h3>My Skills</h3>
-              <p>I am proficient in modern web development, </p>
-              <p> including TypeScript, Vue, Tailwind, Vuetify, and PrimeVue. These skills enable me to build dynamic, responsive, and visually appealing web applications.</p>
-              <br>
+              <p>I am proficient in modern web development, including TypeScript, Vue, Tailwind, Vuetify, and PrimeVue. These skills enable me to build dynamic, responsive, and visually appealing web applications.</p>
             </v-card>
           </v-col>
         </v-row>
       </section>
-      <hr  id="skills"/>
+      <hr id="skills" />
       <skills></skills>
+    </div>
+    <hr class="mt-6" />
 
-  </div>
-  <hr class="mt-6" />
     <!-- Projects section -->
-      <section id="projects" class="mb-16 section">
+    <section id="projects" class="mb-16 section">
       <Projects></Projects>
     </section>
     <div>
       <v-img class="rocket" max-height="400px" :src="rocket"></v-img>
     </div>
- <hr/>
+    <hr />
+
     <!-- Contact section -->
     <section id="contact" class="contact-section section" style="padding-top: 145px !important">
       <v-row justify="center">
@@ -101,54 +101,7 @@ import rocket from '@/assets/rakete.png';
 import astronaut from '@/assets/astronaut.png';
 import me from '@/assets/me.png';
 
-const route = useRoute(); 
-
-
-
-onMounted(() => {
-  const cards = document.querySelectorAll('.custom-card');
-
-  cards.forEach(card => {
-    // Element ist ein HTML-Element 
-    const cardElement = card as HTMLElement;
-
-    cardElement.addEventListener('mousemove', (e: MouseEvent) => {
-      const rect = cardElement.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      // Verwendung einer  CSS-Variable für die Position des "Spotlight"
-      cardElement.style.setProperty('--mouse-x', `${x}px`);
-      cardElement.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    cardElement.addEventListener('mouseleave', () => {
-      // Entfernen des  Effekt beim Verlassen des Elements
-      cardElement.style.setProperty('--mouse-x', `-9999px`);
-      cardElement.style.setProperty('--mouse-y', `-9999px`);
-    });
-  });
-});
-
-
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-
-watch(() => route.hash, (newHash) => {
-  if (newHash) {
-    scrollToSection(newHash.slice(1));
-  }
-});
-
-onMounted(() => {
-  if (route.hash) {
-    scrollToSection(route.hash.slice(1));
-  }
-});
+const route = useRoute();
 
 const typewriterElement = ref<HTMLElement | null>(null);
 const welcomeText = "Welcome to my portfolio!";
@@ -161,12 +114,47 @@ const typeWriter = (text: string, i = 0) => {
   }
 };
 
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+
 onMounted(() => {
+  const cards = document.querySelectorAll('.custom-card');
+
+  cards.forEach(card => {
+    const cardElement = card as HTMLElement;
+
+    cardElement.addEventListener('mousemove', (e: MouseEvent) => {
+      const rect = cardElement.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      cardElement.style.setProperty('--mouse-x', `${x}px`);
+      cardElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    cardElement.addEventListener('mouseleave', () => {
+      cardElement.style.setProperty('--mouse-x', `-9999px`);
+      cardElement.style.setProperty('--mouse-y', `-9999px`);
+    });
+  });
+
+  if (route.hash) {
+    scrollToSection(route.hash.slice(1));
+  }
+
   typeWriter(welcomeText);
+});
+
+watch(() => route.hash, (newHash) => {
+  if (newHash) {
+    scrollToSection(newHash.slice(1));
+  }
 });
 </script>
 
-
-
-<style >
+<style scoped>
 </style>
