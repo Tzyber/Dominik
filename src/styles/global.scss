@@ -288,4 +288,45 @@
 .rocket{
     margin-bottom: -14px;
 }
-  
+
+.moon {
+  top: 3.5rem;
+  right: 50%;
+  display: block;
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  background-image: url('@/assets/2k_moon.jpg');
+  background-repeat: repeat-x;
+  background-size: 300% 100%;
+  opacity: 1;
+  animation: 60s rotation linear infinite forwards;
+margin-left: 15px;
+}
+
+@keyframes rotation {
+  0% {
+    background-position: 0% 0%;
+    box-shadow: inset -10px 8px 6px -5px #ffffff, 
+    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9), 
+    7px -6px 14px rgba(255, 255, 255, 0.32);
+
+  }
+  50% {
+    box-shadow: inset 10px -8px 6px -5px #ffffff, 
+                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9), 
+                -7px 6px 14px rgba(255, 255, 255, 0.32);
+  }
+  100% {
+    background-position: 100% 0%;
+    box-shadow: inset 10px -8px 6px -5px #ffffff, 
+                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9), 
+                -7px 6px 14px rgba(255, 255, 255, 0.32);
+  }
+}
+
+.meIntroduction{
+  margin-top: 5%;
+}
+
+

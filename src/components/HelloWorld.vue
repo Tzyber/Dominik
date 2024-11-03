@@ -2,12 +2,12 @@
   <v-container>
     <section id="home" class="mb-4 section" style="position: relative; overflow: hidden;">
       <div style="height: 100px;">
-        <v-img :src="moon" style="height: 100px; width: 100px;"></v-img>
+        <div class="moon"></div>
       </div>
 
-      <v-row align="center" justify="center">
+      <v-row align="center" justify="center" class="meIntroduction">
         <v-col cols="6" md="5">
-          <h2 class="typewriter text-h4 font-weight-bold mb-6" ref="typewriterElement"></h2>
+          <h2 class="typewriter text-h4 font-weight-bold" style="margin-bottom: 60px !important;" ref="typewriterElement"></h2>
           <h1 class="text-h3 mb-4">My name is Dominik</h1>
           <h2 class="text-h5">
             I am a <span class="underline">Web Developer</span> <br>
@@ -96,7 +96,6 @@
 <script setup lang="ts">
 import { onMounted, watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
-import moon from '@/assets/moon2.png';
 import rocket from '@/assets/rakete.png';
 import astronaut from '@/assets/astronaut.png';
 import me from '@/assets/me.png';
