@@ -5,6 +5,9 @@ $card-bg-dark: #222;
 $card-text-dark: #fff;
 $particle-color: #536dfe;
 $moon-bg-image: '@/assets/2k_moon.jpg';
+$particle-size: 10px;
+$base-color: #536dfe;
+$particle-shadow-color: rgba(83, 109, 254, 0.3);
 
 // Box-Shadows
 $underline-shadow: inset 0 -7px 0 $primary-color;
@@ -183,50 +186,110 @@ $hover-shadow: inset 0 -4px 0 $primary-hover-color;
   width: 100%;
   height: 100%;
   overflow: hidden;
-
-  .particle {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background: radial-gradient(circle, $particle-color 29%, rgba(43, 170, 195, 0) 100%);
-    border-radius: 50%;
-    animation: move 8s linear infinite, changeColor 10s ease-in-out infinite;
-    box-shadow: 0 0 10px 10px rgba($particle-color, 0.3);
-    opacity: 0;
-  }
-
-  // Beispiel für einen Partikel
-  .particle:nth-child(1) {
-    top: 10%;
-    left: 30%;
-    animation-delay: 0s;
-    animation-duration: 5s;
-  }
 }
 
-// Animationen
+.particles-background .particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #536dfe 29%, rgba(43,170,195,0) 100%);
+  border-radius: 50%;
+  animation: move 8s linear infinite, changeColor 10s ease-in-out infinite;
+  box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
+  opacity: 0;
+}
+
+.particles-background .particle:nth-child(1) {
+  top: 10%;
+  left: 30%;
+  animation-delay: 0s;
+  animation-duration: 5s;
+}
+
+.particles-background .particle:nth-child(2) {
+  top: 20%;
+  left: 50%;
+  animation-delay: 1s;
+  animation-duration: 4s;
+}
+
+.particles-background .particle:nth-child(3) {
+  top: 30%;
+  left: 80%;
+  animation-delay: 1.5s;
+  animation-duration: 3.5s;
+}
+
+.particles-background .particle:nth-child(4) {
+  top: 40%;
+  left: 10%;
+  animation-delay: 0.8s;
+  animation-duration: 3s;
+}
+
+.particles-background .particle:nth-child(5) {
+  top: 50%;
+  left: 60%;
+  animation-delay: 2s;
+  animation-duration: 2.5s;
+}
+
+.particles-background .particle:nth-child(6) {
+  top: 60%;
+  left: 40%;
+  animation-delay: 2.5s;
+  animation-duration: 2s;
+}
+
+.particles-background .particle:nth-child(7) {
+  top: 70%;
+  left: 20%;
+  animation-delay: 1s;
+  animation-duration: 4.5s;
+}
+
+.particles-background .particle:nth-child(8) {
+  top: 80%;
+  left: 75%;
+  animation-delay: 1.5s;
+  animation-duration: 5s;
+}
+
 @keyframes move {
   0% {
     transform: translateY(0);
     opacity: 1;
-    box-shadow: 0 0 10px 10px rgba($particle-color, 0.3);
+    box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
   }
+  25% {
+      transform: translateY(-25vh0);
+      opacity: 0.8;
+      box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3); 
+    }
+  50% {
+      transform: translateY(-50);
+    opacity: 0.6;
+    box-shadow: 0 0 15px 20px rgba(83, 109, 254, 0.2); 
+  }
+  75% {
+      opacity: 0.4;
+      box-shadow: 0 0 25px 30px rgba(83, 109, 254, 0.2); 
+    }
   100% {
     transform: translateY(-100vh);
     opacity: 0;
-    box-shadow: 0 0 20px 30px rgba($particle-color, 0);
+    box-shadow: 0 0 20px 30px rgba(83, 109, 254, 0); 
   }
 }
 
 @keyframes changeColor {
   0% {
-    background: radial-gradient(circle, $particle-color 29%, rgba(43, 170, 195, 0) 100%);
+    background: radial-gradient(circle, #536dfe 29%, rgba(43, 170, 195, 0) 100%);
   }
   100% {
-    background: radial-gradient(circle, $particle-color 29%, rgba(43, 170, 195, 0) 100%);
+    background: radial-gradient(circle, #536dfe 29%, rgba(43, 170, 195, 0) 100%);
   }
 }
-
 // Mond-Stil
 .moon {
   top: 3.5rem;
