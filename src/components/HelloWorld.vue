@@ -56,12 +56,17 @@
 
     <!-- Projects section -->
     <section id="projects" class="mb-16 section">
+      <div class="nebulaSection">
+      <Nebula></Nebula>
+    </div>
       <Projects></Projects>
     </section>
     <div>
       <v-img class="rocket" max-height="400px" :src="rocket"></v-img>
     </div>
     <hr />
+
+
 
     <!-- Contact section -->
     <section id="contact" class="contact-section section" style="padding-top: 145px !important">

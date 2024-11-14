@@ -10,7 +10,7 @@
       {{ item.title }}
     </v-btn>
     <v-switch style="display: flex;" color="#536dfe" v-model="particleVisible"> </v-switch>
-    <span class="ml-2">{{ particleVisible ? 'Particles active' : 'Particles off' }}</span>
+    <span class="ml-2">{{ particleVisible ? 'Particles On' : 'Particles Off' }}</span>
   </v-app-bar>
 </template>
 
