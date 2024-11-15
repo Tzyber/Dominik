@@ -15,7 +15,7 @@
           </h2>
         </v-col>
         <v-col cols="12" md="6" class="text-center">
-          <v-avatar size="300">
+          <v-avatar size="300" class="profilePicture">
             <v-img :src="me" alt="Dominik's profile picture"></v-img>
           </v-avatar>
         </v-col>
@@ -48,6 +48,7 @@
             </v-card>
           </v-col>
         </v-row>
+        <TimeLine></TimeLine>
       </section>
       <hr id="skills" />
       <skills></skills>
