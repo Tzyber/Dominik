@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <section id="home" class="mb-4 section" style="position: relative; overflow: hidden;">
+    <section id="home" class="mb-4 section" style="position: relative;">
       <div style="height: 100px;">
         <div class="moon"></div>
       </div>
