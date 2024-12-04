@@ -84,7 +84,7 @@
                 </div>
                 <div class="info-item">
                   <v-icon class="mr-2">mdi-phone</v-icon>
-                  <span>01525 28113804</span>
+                  <span>01525 281 38 04</span>
                 </div>
                 <div class="info-item">
                   <v-icon class="mr-2">mdi-map-marker</v-icon>
