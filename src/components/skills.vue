@@ -29,12 +29,14 @@
 </template>
 
 <script setup lang="ts">
-import vue from "@/assets/pngegg.png"
+import { onMounted } from "vue";
+import vue from "@/assets/pngegg.png";
 import typescript from "@/assets/ts.png"
 import css from "@/assets/css.png"
 import git from "@/assets/git.png"
 import npm from "@/assets/npm.png"
 import vuetify from "@/assets/vuetify2.png"
+
 const skills = [
   { name: "Vue.js", image: vue },
   { name: "Typescript", image: typescript},
