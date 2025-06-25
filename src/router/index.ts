@@ -13,7 +13,7 @@ router.onError((err, to) => {
     if (!localStorage.getItem('vuetify:dynamic-reload')) {
       console.log('Redirecting to home to fix dynamic import error')
       localStorage.setItem('vuetify:dynamic-reload', 'true')
-      router.replace('/*') // Hier wird auf die Startseite weitergeleitet
+      router.replace('/') // Hier wird auf die Startseite weitergeleitet
     } else {
       console.error('Dynamic import error, redirecting did not fix it', err)
     }
