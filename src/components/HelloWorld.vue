@@ -75,7 +75,7 @@
         <v-col cols="12" md="8">
           <v-card class="contact-card">
             <v-card-title class="headline">Contact Me</v-card-title>
-            <v-card-subtitle class="subtitle">Let's get in touch!</v-card-subtitle>
+            <v-card-subtitle class="subtitle">Ready for Hire</v-card-subtitle>
             <v-card-text>
               <div class="contact-info">
                 <div class="info-item">

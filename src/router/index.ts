@@ -11,11 +11,11 @@ const router = createRouter({
 router.onError((err, to) => {
   if (err?.message?.includes?.('Failed to fetch dynamically imported module')) {
     if (!localStorage.getItem('vuetify:dynamic-reload')) {
-      console.log('Reloading page to fix dynamic import error')
+      console.log('Redirecting to home to fix dynamic import error')
       localStorage.setItem('vuetify:dynamic-reload', 'true')
-      location.assign(to.fullPath)
+      router.replace('/*') // Hier wird auf die Startseite weitergeleitet
     } else {
-      console.error('Dynamic import error, reloading page did not fix it', err)
+      console.error('Dynamic import error, redirecting did not fix it', err)
     }
   } else {
     console.error(err)
