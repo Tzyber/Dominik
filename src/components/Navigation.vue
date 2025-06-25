@@ -34,7 +34,7 @@ const items = ref([
   { title: 'About', id: 'about' },
   { title: 'Skills', id: 'skills' },
   { title: 'Projects', id: 'projects' },
-  { title: 'Contact', id: 'contact' }
+  { title: 'Impressum', id: 'impressum' }
 ]);
 </script>
 

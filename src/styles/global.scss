@@ -415,3 +415,58 @@ margin-left: 16px;
   justify-content: center;
   margin: 0 0 5rem 0;
 }
+
+
+
+
+
+
+
+.space-theme {
+  color: #e0e0ff;
+  font-family: 'Orbitron', sans-serif;
+  padding: 3rem 1rem;
+  min-height: 100vh;
+  background-color: rgb(18, 18, 18) !important;
+  background-size: cover;
+  background-position: center;
+}
+
+.space-glow {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: box-shadow 0.4s ease;
+
+  &:hover {
+    box-shadow: 0 0 40px $primary-hover-color;
+  }
+
+  .headline,
+  .subtitle {
+    color: #00e5ff;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+  }
+
+  .contact-info {
+    margin-top: 1.5rem;
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      v-icon {
+        color: #00e5ff;
+      }
+
+      a,
+      span {
+        color: #e0f7fa;
+        font-weight: 500;
+        text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+      }
+    }
+  }
+}
