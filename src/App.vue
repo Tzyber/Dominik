@@ -2,39 +2,29 @@
   <v-app id="app">
 
     <vue-particles
-        v-if="particleVisible()"
-        id="tsparticles"
-        :particlesInit="particlesInit"
-        :particlesLoaded="particlesLoaded"
-        v-bind:options="particlesOptions"
+      v-if="appStore.particleVisible"
+      id="tsparticles"
+      :options="particlesOptions"
+      :particles-init="particlesInit"
     />
     <v-main>
       <Navigation />
-      <HelloWorld/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts" setup>
-  import { loadSlim } from "tsparticles-slim";
-  import { particlesOptions } from "./particle-options";
-  import type { Engine } from "tsparticles-engine";
+  import { useAppStore } from '@/stores/app'
+  import { loadSlim } from 'tsparticles-slim'
+  import { particlesOptions } from './particle-options'
+  import type { Engine } from 'tsparticles-engine'
 
-  const globalState = inject("globalState") as { particleVisible: boolean };
-  
-  function particleVisible() {
-    return globalState.particleVisible
-  }
-
+  const appStore = useAppStore()
 
   const particlesInit = async (engine: Engine) => {
-    await loadSlim(engine);
-  };
-
-  const particlesLoaded = async (container: any) => {
-    console.log("Particles container loaded", container);
-  };
-
+    await loadSlim(engine)
+  }
 </script>
 
 <style>

@@ -1,4 +1,3 @@
-
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { routes } from 'vue-router/auto-routes'
@@ -8,7 +7,7 @@ const router = createRouter({
   routes: setupLayouts(routes),
 })
 
-router.onError((err, to) => {
+router.onError((err, _to) => {
   if (err?.message?.includes?.('Failed to fetch dynamically imported module')) {
     if (!localStorage.getItem('vuetify:dynamic-reload')) {
       console.log('Redirecting to home to fix dynamic import error')

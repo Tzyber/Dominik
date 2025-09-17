@@ -23,7 +23,7 @@ export default defineConfig({
         'vue',
         {
           'vue-router/auto': ['useRoute', 'useRouter'],
-        }
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       eslintrc: {
@@ -71,7 +71,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@import "@/styles/global.scss";` // Pfad zur globalen SCSS-Datei
+        additionalData: `@import "@/styles/global.scss";`, // Pfad zur globalen SCSS-Datei
       },
     },
   },

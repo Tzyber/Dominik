@@ -1,109 +1,70 @@
 <template>
-    <div>
-      <!-- Horizontal Timeline (für große Bildschirme) -->
-      <v-timeline
-        v-if="isLargeScreen"
-        direction="horizontal"
-        class="mt-8"
+  <div>
+    <v-timeline
+      :direction="isLargeScreen ? 'horizontal' : 'vertical'"
+      class="mt-8"
+    >
+      <v-timeline-item
+        v-for="(event, index) in timelineEvents"
+        :key="index"
+        :dot-color="event.color"
       >
-        <v-timeline-item :dot-color="'#ff0096b3'">
-          <template v-slot:opposite>
-            <div>
-              <div class="text-h6">Selbstständig</div>
-              <p>Selbstständig als Webdesigner und Entwickler</p>
+        <template #opposite>
+          <div>
+            <div class="text-h6">{{ event.title }}</div>
+            <p>{{ event.description }}</p>
           </div>
         </template>
-          x - 2018
-        </v-timeline-item>
-        <v-timeline-item>
-          <template v-slot:opposite>
-            <div class="text-h6">Mammut Media</div>
-            <p>Webdesign und Entwicklung von Komponenten und Websites speziell für die Kunden.</p>
-        </template>
-          2018-2019
-        </v-timeline-item>
-        <v-timeline-item :dot-color="'#ff0096b3'">
-          <template v-slot:opposite>
-            <div>
-              <div class="text-h6">Docunite Gmbh</div>
-              <p>Solution Developer (Webentwickler) für Docunite.</p>
-        </div>
-        </template>
-          2020-2024
-        </v-timeline-item>
-        <v-timeline-item>
-          <template v-slot:opposite>
-            <div>
-            <div class="text-h6">Umschulung</div>
-              <p>Umschulung zum Fachinformatiker in Anwendungsentwicklung</p>
-          </div>
-          </template>
-          2025
-        </v-timeline-item>
-      </v-timeline>
+        {{ event.date }}
+      </v-timeline-item>
+    </v-timeline>
+  </div>
+</template>
 
-      <!-- Vertical Timeline (für kleine Bildschirme) -->
-      <v-timeline
-        v-else
-        direction="vertical"
-        class="mt-8"
-      >
-        <v-timeline-item>
-          <template v-slot:opposite>
-            <div>
-              <div class="text-h6">Selbstständig</div>
-              <p>Selbstständig als Webdesigner und Entwickler</p>
-          </div>
-        </template>
-          x - 2018
-        </v-timeline-item>
-        <v-timeline-item>
-          <template v-slot:opposite>
-            <div>
-              <div class="text-h6">Mammut Media</div>
-              <p>Webdesign und Entwicklung von Komponenten und Websites speziell für die Kunden.</p>
-            </div>
-          </template>
-          2018-2019
-        </v-timeline-item>
-
-        <v-timeline-item :dot-color="'#ff0096b3'">
-          <template v-slot:opposite>
-            <div>
-              <div class="text-h6">Docunite Gmbh</div>
-              <p>Solution Developer (Webentwickler) für Docunite.</p>
-        </div>
-        </template>
-          2020-2024
-        </v-timeline-item>
-        <v-timeline-item>
-          <template v-slot:opposite>
-            <div>
-            <div class="text-h6">Umschulung</div>
-              <p>Umschulung zum Fachinformatiker in Anwendungsentwicklung</p>
-          </div>
-          </template>
-          2025
-        </v-timeline-item>
-      </v-timeline>
-    </div>
-  </template>
-
-  <script lang="ts">
-  import { defineComponent, computed } from 'vue';
-import { useDisplay } from 'vuetify';
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
+import { useDisplay } from 'vuetify'
 
 export default defineComponent({
-  setup() {
-    const { mdAndUp } = useDisplay();
-    const isLargeScreen = computed(() => mdAndUp.value);
+  setup () {
+    const { mdAndUp } = useDisplay()
+    const isLargeScreen = computed(() => mdAndUp.value)
+
+    const timelineEvents = [
+      {
+        title: 'Selbstständig',
+        description: 'Selbstständig als Webdesigner und Entwickler',
+        date: 'x - 2018',
+        color: '#ff0096b3',
+      },
+      {
+        title: 'Mammut Media',
+        description: 'Webdesign und Entwicklung von Komponenten und Websites speziell für die Kunden.',
+        date: '2018-2019',
+        color: 'primary',
+      },
+      {
+        title: 'Docunite Gmbh',
+        description: 'Solution Developer (Webentwickler) für Docunite.',
+        date: '2020-2024',
+        color: '#ff0096b3',
+      },
+      {
+        title: 'Umschulung',
+        description: 'Umschulung zum Fachinformatiker in Anwendungsentwicklung',
+        date: '2025',
+        color: 'primary',
+      },
+    ]
 
     return {
       isLargeScreen,
-    };
+      timelineEvents,
+    }
   },
-});
-    </script>
+})
+</script>
+
 <style scoped>
 
 </style>
