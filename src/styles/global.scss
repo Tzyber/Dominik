@@ -50,6 +50,7 @@ $contact-hover-shadow: inset 0 -4px 8px $primary-hover-color;
 
 hr {
   box-shadow:  1px 2px 15px rgba(255, 0, 150, 1);
+  z-index: 100 !important;
 }
 
 .profilePicture{
@@ -132,6 +133,7 @@ hr {
 .custom-card {
   transform: scale(1); /* Standardzustand */
   animation: scale-back 0.6s ease-in-out; /* Animation beim Hover-Exit */
+  background-color: #090707bb;
 }
 
 .custom-card:hover {
@@ -378,9 +380,9 @@ hr {
   border-radius: 50%;
   background-image: url('@/assets/2k_moon.jpg');
   background-repeat: repeat-x;
-  background-size: 200% 100%;
+  background-size: 300% 100%;
   opacity: 1;
-  animation: 120s rotation linear infinite forwards;
+  animation: 120s rotation  infinite forwards;
 margin-left: 16px;
 }
 

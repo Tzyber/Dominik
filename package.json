@@ -10,11 +10,16 @@
   "dependencies": {
     "@mdi/font": "7.4.47",
     "@splinetool/loader": "^1.9.40",
+    "@tsparticles/vue3": "^3.0.1",
     "core-js": "^3.37.1",
+    "particles.vue3": "^2.12.0",
     "roboto-fontface": "*",
     "spline": "^0.0.0",
     "three": "^0.168.0",
+    "tsparticles": "^3.9.1",
+    "tsparticles-slim": "^2.12.0",
     "vue": "^3.4.31",
+    "vue3-particles": "^2.12.0",
     "vuetify": "^3.6.11"
   },
   "devDependencies": {

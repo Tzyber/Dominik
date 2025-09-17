@@ -22,15 +22,14 @@
       </v-row>
     </section>
 
-    <!-- Particle animation background -->
-    <Particles></Particles>
-
     <!-- About section -->
     <div class="col-sm-4 col-md-5 col-6" id="about">
       <div style="display: grid; justify-content: end; margin-bottom: -65px;">
         <v-img style="width: 200px" :src="astronaut"></v-img>
       </div>
+      <div style="z-index: 100;">
       <hr />
+      </div>
       <section class="mb-12 mt-12">
         <h2 class="aboutMe mb-6">About me</h2>
         <v-row>

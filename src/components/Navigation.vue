@@ -1,7 +1,8 @@
 <template>
   <v-app-bar :elevation="2" app fixed>
     <v-app-bar-title>Dominik Dörrier</v-app-bar-title>
-    <v-spacer></v-spacer>
+    
+
     <v-btn
       v-for="item in items"
       :key="item.id"
@@ -10,7 +11,8 @@
       {{ item.title }}
     </v-btn>
     <v-switch style="display: flex;" color="#536dfe" v-model="particleVisible"> </v-switch>
-    <span class="ml-2">{{ particleVisible ? 'Particles On' : 'Particles Off' }}</span>
+    <span class="ml-2">{{ particleVisible ? 'Particles ' : 'Particles' }}</span>
+
   </v-app-bar>
 </template>
 
