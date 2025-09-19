@@ -5,12 +5,56 @@ import { createVuetify, useDisplay } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import { computed } from 'vue'
+import type { DisplayInstance } from 'vuetify' // Import DisplayInstance
 
-vi.mock('vuetify', async importOriginal => {
-  const actual = await importOriginal()
+// Helper function to create a mock DisplayInstance
+const createMockDisplayInstance = (overrides: Partial<DisplayInstance> = {}): DisplayInstance => {
   return {
-    ...(actual as object),
-    useDisplay: vi.fn(),
+    mdAndUp: computed(() => false),
+    xs: computed(() => false),
+    sm: computed(() => false),
+    md: computed(() => false),
+    lg: computed(() => false),
+    xl: computed(() => false),
+    mobile: computed(() => false),
+    name: 'md',
+    height: 0,
+    width: 0,
+    thresholds: { xs: 0, sm: 600, md: 960, lg: 1280, xl: 1920 },
+    displayClasses: computed(() => ({})),
+    ssr: false, // Moved to top level
+    platform: {
+      android: false,
+      ios: false,
+      edge: false,
+      electron: false,
+      chrome: false,
+      firefox: false,
+      opera: false,
+      safari: false,
+      webkit: false,
+      mac: false,
+      windows: false,
+      linux: false,
+      touch: false,
+      mobile: false,
+      desktop: false,
+      blackberry: false,
+      cordova: false,
+      capacitor: false,
+      native: false,
+    },
+    update: () => {},
+    ...overrides,
+  } as DisplayInstance;
+};
+
+// Mock the entire vuetify module
+vi.mock('vuetify', async importOriginal => {
+  const actual = await importOriginal() as object;
+  return {
+    ...actual,
+    useDisplay: vi.fn(() => createMockDisplayInstance()), // Use the helper function
   }
 })
 
@@ -19,9 +63,9 @@ describe('timeLine.vue', () => {
 
   it('renders horizontal timeline on large screens', () => {
     // Arrange
-    vi.mocked(useDisplay).mockReturnValue({
+    vi.mocked(useDisplay).mockReturnValue(createMockDisplayInstance({
       mdAndUp: computed(() => true),
-    })
+    }) as any)
 
     const wrapper = mount(timeLine, {
       global: {
@@ -39,9 +83,9 @@ describe('timeLine.vue', () => {
 
   it('renders vertical timeline on small screens', () => {
     // Arrange
-    vi.mocked(useDisplay).mockReturnValue({
+    vi.mocked(useDisplay).mockReturnValue(createMockDisplayInstance({
       mdAndUp: computed(() => false),
-    })
+    }) as any)
 
     const wrapper = mount(timeLine, {
       global: {
@@ -59,9 +103,9 @@ describe('timeLine.vue', () => {
 
   it('renders the correct content in the timeline items', () => {
     // Arrange
-    vi.mocked(useDisplay).mockReturnValue({
+    vi.mocked(useDisplay).mockReturnValue(createMockDisplayInstance({
       mdAndUp: computed(() => true),
-    })
+    }) as any)
 
     const wrapper = mount(timeLine, {
       global: {
