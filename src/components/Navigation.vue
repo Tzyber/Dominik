@@ -10,8 +10,8 @@
       {{ item.title }}
     </v-btn>
     <v-switch
-      :model-value="appStore.particleVisible"
       color="#536dfe"
+      :model-value="appStore.particleVisible"
       style="display: flex;"
       @change="appStore.toggleParticles"
     />
@@ -35,7 +35,7 @@
   ])
 </script>
 
-<style >
+<style>
 .v-btn__overlay{
   opacity: 0 !important;
 }

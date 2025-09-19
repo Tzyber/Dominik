@@ -10,6 +10,7 @@ import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 // Utilities
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
+import type { PluginOption } from 'vite' // ADDED THIS LINE
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -51,7 +52,7 @@ export default defineConfig({
         }],
       },
     }),
-  ],
+  ] as PluginOption[],
   define: { 'process.env': {} },
   resolve: {
     alias: {

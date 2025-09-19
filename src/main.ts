@@ -6,7 +6,6 @@ import { loadFull } from 'tsparticles' // <--  Engine
 
 const app = createApp(App)
 
-
 app.use(Particles, {
   init: async engine => {
     await loadFull(engine)

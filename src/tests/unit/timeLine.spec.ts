@@ -21,7 +21,7 @@ describe('timeLine.vue', () => {
     // Arrange
     vi.mocked(useDisplay).mockReturnValue({
       mdAndUp: computed(() => true),
-    } as any)
+    })
 
     const wrapper = mount(timeLine, {
       global: {
@@ -41,7 +41,7 @@ describe('timeLine.vue', () => {
     // Arrange
     vi.mocked(useDisplay).mockReturnValue({
       mdAndUp: computed(() => false),
-    } as any)
+    })
 
     const wrapper = mount(timeLine, {
       global: {
@@ -61,7 +61,7 @@ describe('timeLine.vue', () => {
     // Arrange
     vi.mocked(useDisplay).mockReturnValue({
       mdAndUp: computed(() => true),
-    } as any)
+    })
 
     const wrapper = mount(timeLine, {
       global: {

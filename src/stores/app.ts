@@ -5,10 +5,9 @@ export const useAppStore = defineStore('app', {
     particleVisible: localStorage.getItem('localParticles') === 'true',
   }),
   actions: {
-    toggleParticles() {
+    toggleParticles () {
       this.particleVisible = !this.particleVisible
       localStorage.setItem('localParticles', this.particleVisible.toString())
     },
   },
 })
-

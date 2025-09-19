@@ -115,7 +115,7 @@
   const typewriterElement = ref<HTMLElement | null>(null)
   const welcomeText = 'Welcome to my portfolio!'
 
-  const typeWriter = (text: string, i = 0) => {
+  const typeWriter = (text: string, i = 0): void => {
     if (i < text.length && typewriterElement.value) {
       typewriterElement.value.innerHTML += text.charAt(i)
       i++
@@ -123,7 +123,7 @@
     }
   }
 
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: string): void => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })

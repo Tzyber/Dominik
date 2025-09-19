@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
+import { describe, expect, it } from 'vitest'
 import Projects from '@/components/Projects.vue'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'

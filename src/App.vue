@@ -22,7 +22,7 @@
 
   const appStore = useAppStore()
 
-  const particlesInit = async (engine: Engine) => {
+  const particlesInit = async (engine: Engine): Promise<void> => {
     await loadSlim(engine)
   }
 </script>
