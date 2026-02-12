@@ -1,5 +1,5 @@
 <template>
-  <div class="space-theme" style="background: transparent !important;">
+  <div class="space-theme">
     <v-container class="fill-height">
       <v-row justify="center">
         <v-col cols="12" md="10">
