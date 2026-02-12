@@ -58,7 +58,7 @@
         {
           title: 'Zertifizierung',
           description: 'SAP Foundation Level',
-          date: '2025',
+          date: '2026',
           color: '#ff0096b3',
         },
       ]
