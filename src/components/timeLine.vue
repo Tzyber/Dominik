@@ -32,9 +32,9 @@
 
       const timelineEvents = [
         {
-          title: 'Selbstständig',
-          description: 'Selbstständig als Webdesigner und Entwickler',
-          date: 'x - 2018',
+          title: 'Ehemalig selbstständig',
+          description: 'Ehemalig selbstständig als Webdesigner und Entwickler',
+          date: 'bis 2018',
           color: '#ff0096b3',
         },
         {

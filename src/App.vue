@@ -11,6 +11,7 @@
       <Navigation />
       <router-view />
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
@@ -19,6 +20,7 @@
   import { loadSlim } from 'tsparticles-slim'
   import { particlesOptions } from './particle-options'
   import type { Engine } from 'tsparticles-engine'
+  import Footer from '@/components/Footer.vue'
 
   const appStore = useAppStore()
 

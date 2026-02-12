@@ -66,39 +66,7 @@
     </div>
     <hr>
 
-    <!-- Contact section -->
-    <section id="impressum" class="contact-section space-theme">
-      <v-row justify="center">
-        <v-col cols="12" md="8">
-          <v-card class="contact-card space-glow">
-            <v-card-title class="headline">👨‍🚀 Impressum</v-card-title>
-            <v-card-subtitle class="subtitle">Pflichtangaben nach DDG</v-card-subtitle>
-            <v-card-text>
-              <div class="contact-info">
-                <div class="info-item">
-                  <v-icon class="mr-2">mdi-account</v-icon>
-                  <span><strong>Dominik Dörrier</strong></span>
-                </div>
-                <div class="info-item">
-                  <v-icon class="mr-2">mdi-home</v-icon>
-                  <span>Lothringerstraße 41, 42107 Wuppertal</span>
-                </div>
-                <div class="info-item">
-                  <v-icon class="mr-2">mdi-phone</v-icon>
-                  <span>01525 281 38 04</span>
-                </div>
-                <div class="info-item">
-                  <v-icon class="mr-2">mdi-email</v-icon>
-                  <a class="email" href="mailto:mail@dominik-webdeveloper.com">
-                    mail@dominik-webdeveloper.com
-                  </a>
-                </div>
-              </div>
-            </v-card-text>
-          </v-card>
-        </v-col>
-      </v-row>
-    </section>
+
 
   </v-container>
 </template>
