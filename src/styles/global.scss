@@ -75,7 +75,7 @@ hr {
     font-size: 1.2rem;
     color: rgba($card-text-dark, 0.7);
   }
-  
+
   &:hover {
     box-shadow: $contact-hover-shadow;
   }
@@ -126,8 +126,8 @@ hr {
     grid-template-columns: repeat(3, 1fr);
   }
 }
- 
-// Custom Card animation. 
+
+// Custom Card animation.
 // die svgs drehen sich danach verschwinden sie und die card wird größer
 
 .custom-card {
@@ -143,13 +143,13 @@ hr {
 .custom-svg {
   transform: rotate(90deg);
   opacity: 1;
-  animation: 
+  animation:
     rotate-back 0.6s linear forwards,
     fade-in 0.3s ease-in-out forwards;
 }
 
 .custom-card:hover .custom-svg {
-  animation: 
+  animation:
     rotate-svg 0.6s linear forwards,
     fade-out 0.3s ease-in-out 1s forwards; /* Fade-out nach der Drehung */
 }
@@ -176,6 +176,10 @@ hr {
 @keyframes rotate-back {
   from { transform: rotate(450deg); }
   to { transform: rotate(90deg); }
+}
+
+.v-btn--variant-text .v-btn__overlay{
+  background-color: transparent !important;
 }
 
 @keyframes fade-in {
@@ -344,21 +348,21 @@ hr {
   25% {
       transform: translateY(-25vh0);
       opacity: 0.8;
-      box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3); 
+      box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
     }
   50% {
       transform: translateY(-50);
     opacity: 0.6;
-    box-shadow: 0 0 15px 20px rgba(83, 109, 254, 0.2); 
+    box-shadow: 0 0 15px 20px rgba(83, 109, 254, 0.2);
   }
   75% {
       opacity: 0.4;
-      box-shadow: 0 0 25px 30px rgba(83, 109, 254, 0.2); 
+      box-shadow: 0 0 25px 30px rgba(83, 109, 254, 0.2);
     }
   100% {
     transform: translateY(-100vh);
     opacity: 0;
-    box-shadow: 0 0 20px 30px rgba(83, 109, 254, 0); 
+    box-shadow: 0 0 20px 30px rgba(83, 109, 254, 0);
   }
 }
 
@@ -380,36 +384,52 @@ hr {
   border-radius: 50%;
   background-image: url('@/assets/2k_moon.jpg');
   background-repeat: repeat-x;
-  background-size: 300% 100%;
+  background-size: 400% 100%;
   opacity: 1;
-  animation: 120s rotation  infinite forwards;
-margin-left: 16px;
+  animation: rotation 60s linear infinite;
+  margin-left: 16px;
+  will-change: background-position;
+  backface-visibility: hidden;
+  z-index: -1;
 }
 
 @keyframes rotation {
   0% {
     background-position: 0% 0%;
-    box-shadow: inset -10px 8px 6px -5px #ffffff, 
-    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9), 
+    box-shadow: inset -10px 8px 6px -5px #ffffff,
+    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9),
     7px -6px 14px rgba(255, 255, 255, 0.32);
-
+  }
+  25% {
+    background-position: 25% 0%;
+    box-shadow: inset 10px -8px 6px -5px #ffffff,
+                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9),
+                -7px 6px 14px rgba(255, 255, 255, 0.32);
   }
   50% {
     background-position: 50% 0%;
-    box-shadow: inset 10px -8px 6px -5px #ffffff, 
-                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9), 
-                -7px 6px 14px rgba(255, 255, 255, 0.32);
+    box-shadow: inset -10px -8px 6px -5px #ffffff,
+                inset 20px 20px 40px 30px rgba(0, 0, 0, 0.9),
+                7px 6px 14px rgba(255, 255, 255, 0.32);
+  }
+  75% {
+    background-position: 75% 0%;
+    box-shadow: inset 10px 8px 6px -5px #ffffff,
+                inset -20px -20px 40px 30px rgba(0, 0, 0, 0.9),
+                -7px -6px 14px rgba(255, 255, 255, 0.32);
   }
   100% {
     background-position: 100% 0%;
-    box-shadow: inset 10px -8px 6px -5px #ffffff, 
-                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9), 
-                -7px 6px 14px rgba(255, 255, 255, 0.32);
+    box-shadow: inset -10px 8px 6px -5px #ffffff,
+    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9),
+    7px -6px 14px rgba(255, 255, 255, 0.32);
   }
 }
 
 .meIntroduction{
   margin-top: 5%;
+  position: relative;
+  z-index: 1;
 }
 
 .nebulaSection{
