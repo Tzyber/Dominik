@@ -1,494 +1,164 @@
-// Farben 0 4px 8px rgba(255, 0, 150, 0.7);
-$primary-color: rgba(83, 109, 254, .41);
-$primary-hover-color: rgba(255, 0, 150, 0.702);
-$card-bg-dark: #222;
-$card-text-dark: #fff;
-$particle-color: #536dfe;
-$moon-bg-image: '@/assets/2k_moon.jpg';
-$particle-size: 10px;
-$base-color: #536dfe;
-$particle-shadow-color: rgba(83, 109, 254, 0.3);
-$customSVGPosition: -0.01rem;
 
-// Box-Shadows
-$underline-shadow: inset 0 -7px 0 $primary-color;
-$hover-shadow: inset 0 -4px 0 $primary-hover-color;
-$contact-hover-shadow: inset 0 -4px 8px $primary-hover-color;
+:root {
+  // deep-space palette — blue-black, not pure black
+  --void: #05070f;
+  --deep: #0a0e1c;
+  --panel: #10152a;
+  --panel-2: #161c36;
+  --hairline: rgba(140, 155, 220, 0.14);
+  --ink: #eaecf6;
+  --ink-dim: #9aa3c4;
+  --ink-faint: #626b90;
 
-// Allgemeine Stile
-.section {
-  min-height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-top: 64px;
+  // signals — blue is the workhorse, magenta is the rare aurora accent
+  --signal: #7c8cff;
+  --signal-soft: rgba(124, 140, 255, 0.16);
+  --aurora: #ff5c9a;
+  --aurora-teal: #4fd6c4;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
 }
 
-.underline {
-  box-shadow: $underline-shadow;
+html {
+  scroll-behavior: smooth;
 }
 
-.v-timeline .v-timeline-divider__dot {
-  background: $primary-color !important;
+body,
+#app {
+  font-family: var(--font-body);
+  background: var(--void);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
 }
 
-.aboutMe {
-  display: flex;
-  justify-content: center;
+::selection {
+  background: var(--signal);
+  color: var(--void);
 }
 
-// Projektkarte Stile
-.project-card {
-  border: 2px solid transparent;
-  box-shadow: inset 0 4px 8px $primary-color;
-  transition: box-shadow 0.3s ease-in-out;
-
-  &:hover {
-    box-shadow: $hover-shadow;
-  }
-}
-
-hr {
-  box-shadow:  1px 2px 15px rgba(255, 0, 150, 1);
-  z-index: 100 !important;
-}
-
-.profilePicture{
-  box-shadow:  5px 2px 15px rgba(255, 0, 150, 1);
-}
-
-// Kontaktkarte Stile
-.contact-card {
-  background-color: $card-bg-dark;
-  color: $card-text-dark;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: inset 0 4px 8px $primary-color;
-  transition: box-shadow 0.5s ease-in-out;
-
-  .headline {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
-  .subtitle {
-    font-size: 1.2rem;
-    color: rgba($card-text-dark, 0.7);
-  }
-
-  &:hover {
-    box-shadow: $contact-hover-shadow;
-  }
-}
-
-// Kontaktinformationen
-.contact-info {
-  margin-top: 20px;
-
-  .info-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-
-    v-icon {
-      margin-right: 10px;
-    }
-
-    span {
-      font-size: 1rem;
-    }
-  }
-}
-
-// Links und Email
-.email:link {
-  color: $card-text-dark;
-}
-
-.links {
-  color: $card-text-dark;
-  text-decoration: none;
-  box-shadow: inset 0 -3px 0 $particle-color;
-}
-
-// Custom Grid
-.custom-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-  padding: 2.5rem 0;
-
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (min-width: 1024px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-// Custom Card animation.
-// die svgs drehen sich danach verschwinden sie und die card wird größer
-
-.custom-card {
-  transform: scale(1); /* Standardzustand */
-  animation: scale-back 0.6s ease-in-out; /* Animation beim Hover-Exit */
-  background-color: #090707bb;
-}
-
-.custom-card:hover {
-  animation: scale-card 0.6s ease-in-out 1s forwards; /* Verzögerung beim Hover */
-}
-
-.custom-svg {
-  transform: rotate(90deg);
-  opacity: 1;
-  animation:
-    rotate-back 0.6s linear forwards,
-    fade-in 0.3s ease-in-out forwards;
-}
-
-.custom-card:hover .custom-svg {
-  animation:
-    rotate-svg 0.6s linear forwards,
-    fade-out 0.3s ease-in-out 1s forwards; /* Fade-out nach der Drehung */
-}
-
-/* Keyframes für die Card */
-@keyframes scale-card {
-  to { transform: scale(1.07); box-shadow: 1px 2px 15px rgb(255, 0, 150); }
-}
-
-@keyframes scale-back {
-  from { transform: scale(1.07) }
-  to { transform: scale(1); }
-}
-
-/* Keyframes für die SVGs */
-@keyframes rotate-svg {
-  to { transform: rotate(450deg); }
-}
-
-@keyframes fade-out {
-  to { opacity: 0; }
-}
-
-@keyframes rotate-back {
-  from { transform: rotate(450deg); }
-  to { transform: rotate(90deg); }
-}
-
-.v-btn--variant-text .v-btn__overlay{
-  background-color: transparent !important;
-}
-
-@keyframes fade-in {
-  to { opacity: 1; }
-}
-// Custom Card
-
-.custom-card {
+// ============================================================
+// Shared layout
+// ============================================================
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 28px;
   position: relative;
-  display: flex;
-  height: 13rem;
-  width: 100%;
-  max-width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 1rem;
-  transition: all 0.3s ease-in-out;
-  border-radius: 8px;
-  transition: transform 0.6s ease-in-out;
+  z-index: 2;
+}
 
-  @media (prefers-color-scheme: dark) {
-    border-color: rgba($card-text-dark, 0.2);
-  }
-
-  p {
-    position: relative;
-    z-index: 2;
-  }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--signal);
+  display: inline-flex;
+  gap: 0.6em;
+  align-items: center;
 
   &::before {
-    content: "";
-    position: absolute;
-    top: var(--mouse-y, 50%);
-    left: var(--mouse-x, 50%);
-    width: 200px;
-    height: 200px;
-    background: radial-gradient(circle, $primary-color 10%, transparent 60%);
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-
-  }
-
-  &:hover::before {
-    opacity: 0.5;
-  }
-
-  .image-container {
-    width: 50%;
-    height: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    z-index: 2;
-
-    &:hover {
-      opacity: .4;
-    }
+    content: '';
+    width: 26px;
+    height: 1px;
+    background: var(--signal);
+    opacity: 0.7;
   }
 }
 
-// Custom SVG
-.custom-svg {
-  position: absolute;
-  width: 1.5rem;
-  height: 1.5rem;
-  color: black;
-
-  transform: rotate(90deg);
-
-  @media (prefers-color-scheme: dark) {
-    color: $card-text-dark;
-  }
-
-  &.top-left { top: $customSVGPosition; left: $customSVGPosition; }
-  &.bottom-left { bottom: $customSVGPosition; left: $customSVGPosition; }
-  &.top-right { top: $customSVGPosition; right: $customSVGPosition; }
-  &.bottom-right { bottom: $customSVGPosition; right: $customSVGPosition; }
+h2.section-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  letter-spacing: -0.02em;
+  margin: 0.5rem 0 2.4rem;
+  line-height: 1.05;
+  color: var(--ink);
 }
 
-// Particle Background Animation
-.particles-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.particles-background .particle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #536dfe 29%, rgba(43,170,195,0) 100%);
-  border-radius: 50%;
-  animation: move 8s linear infinite, changeColor 10s ease-in-out infinite;
-  box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
-  opacity: 0;
-}
-
-.particles-background .particle:nth-child(1) {
-  top: 10%;
-  left: 30%;
-  animation-delay: 0s;
-  animation-duration: 5s;
-}
-
-.particles-background .particle:nth-child(2) {
-  top: 20%;
-  left: 50%;
-  animation-delay: 1s;
-  animation-duration: 4s;
-}
-
-.particles-background .particle:nth-child(3) {
-  top: 30%;
-  left: 80%;
-  animation-delay: 1.5s;
-  animation-duration: 3.5s;
-}
-
-.particles-background .particle:nth-child(4) {
-  top: 40%;
-  left: 10%;
-  animation-delay: 0.8s;
-  animation-duration: 3s;
-}
-
-.particles-background .particle:nth-child(5) {
-  top: 50%;
-  left: 60%;
-  animation-delay: 2s;
-  animation-duration: 2.5s;
-}
-
-.particles-background .particle:nth-child(6) {
-  top: 60%;
-  left: 40%;
-  animation-delay: 2.5s;
-  animation-duration: 2s;
-}
-
-.particles-background .particle:nth-child(7) {
-  top: 70%;
-  left: 20%;
-  animation-delay: 1s;
-  animation-duration: 4.5s;
-}
-
-.particles-background .particle:nth-child(8) {
-  top: 80%;
-  left: 75%;
-  animation-delay: 1.5s;
-  animation-duration: 5s;
-}
-
-@keyframes move {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-    box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
-  }
-  25% {
-      transform: translateY(-25vh0);
-      opacity: 0.8;
-      box-shadow: 0 0 10px 10px rgba(83, 109, 254, 0.3);
-    }
-  50% {
-      transform: translateY(-50);
-    opacity: 0.6;
-    box-shadow: 0 0 15px 20px rgba(83, 109, 254, 0.2);
-  }
-  75% {
-      opacity: 0.4;
-      box-shadow: 0 0 25px 30px rgba(83, 109, 254, 0.2);
-    }
-  100% {
-    transform: translateY(-100vh);
-    opacity: 0;
-    box-shadow: 0 0 20px 30px rgba(83, 109, 254, 0);
-  }
-}
-
-@keyframes changeColor {
-  0% {
-    background: radial-gradient(circle, #536dfe 29%, rgba(43, 170, 195, 0) 100%);
-  }
-  100% {
-    background: radial-gradient(circle, #536dfe 29%, rgba(43, 170, 195, 0) 100%);
-  }
-}
-// Mond-Stil
-.moon {
-  top: 3.5rem;
-  right: 50%;
-  display: block;
-  width: 20rem;
-  height: 20rem;
-  border-radius: 50%;
-  background-image: url('@/assets/2k_moon.jpg');
-  background-repeat: repeat-x;
-  background-size: 400% 100%;
-  opacity: 1;
-  animation: rotation 60s linear infinite;
-  margin-left: 16px;
-  will-change: background-position;
-  backface-visibility: hidden;
-  z-index: -1;
-}
-
-@keyframes rotation {
-  0% {
-    background-position: 0% 0%;
-    box-shadow: inset -10px 8px 6px -5px #ffffff,
-    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9),
-    7px -6px 14px rgba(255, 255, 255, 0.32);
-  }
-  25% {
-    background-position: 25% 0%;
-    box-shadow: inset 10px -8px 6px -5px #ffffff,
-                inset -20px 20px 40px 30px rgba(0, 0, 0, 0.9),
-                -7px 6px 14px rgba(255, 255, 255, 0.32);
-  }
-  50% {
-    background-position: 50% 0%;
-    box-shadow: inset -10px -8px 6px -5px #ffffff,
-                inset 20px 20px 40px 30px rgba(0, 0, 0, 0.9),
-                7px 6px 14px rgba(255, 255, 255, 0.32);
-  }
-  75% {
-    background-position: 75% 0%;
-    box-shadow: inset 10px 8px 6px -5px #ffffff,
-                inset -20px -20px 40px 30px rgba(0, 0, 0, 0.9),
-                -7px -6px 14px rgba(255, 255, 255, 0.32);
-  }
-  100% {
-    background-position: 100% 0%;
-    box-shadow: inset -10px 8px 6px -5px #ffffff,
-    inset 20px -20px 40px 30px rgba(0, 0, 0, 0.9),
-    7px -6px 14px rgba(255, 255, 255, 0.32);
-  }
-}
-
-.meIntroduction{
-  margin-top: 5%;
+section.block {
+  padding: clamp(72px, 12vh, 140px) 0;
   position: relative;
-  z-index: 1;
 }
 
-.nebulaSection{
-  display: flex;
-  justify-content: center;
-  margin: 0 0 5rem 0;
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hairline) 15%, var(--hairline) 85%, transparent);
 }
 
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 13px 22px;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s, border-color 0.2s, color 0.2s;
 
+  &:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 3px;
+  }
+}
 
+.btn-primary {
+  background: var(--signal);
+  color: var(--void);
+  font-weight: 700;
 
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -8px var(--signal);
+  }
+}
 
+.btn-ghost {
+  border: 1px solid var(--hairline);
+  color: var(--ink-dim);
+  background: transparent;
 
+  &:hover {
+    border-color: var(--signal);
+    color: var(--ink);
+  }
+}
 
+// ============================================================
+// Legal pages (Impressum / Datenschutz) — mapped to new panels
+// ============================================================
 .space-theme {
-  color: #e0e0ff;
-  font-family: 'Orbitron', sans-serif;
-  padding: 3rem 1rem;
+  color: var(--ink);
+  padding: 6rem 1rem 3rem;
   min-height: 100vh;
-  background-color: rgb(18, 18, 18) !important;
-  background-size: cover;
-  background-position: center;
 }
 
 .space-glow {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: box-shadow 0.4s ease;
+  background: var(--panel) !important;
+  border: 1px solid var(--hairline) !important;
+  border-radius: 16px !important;
+  box-shadow: none !important;
 
-  &:hover {
-    box-shadow: 0 0 40px $primary-hover-color;
+  a {
+    color: var(--signal);
+  }
+}
+
+// ============================================================
+// Reduced motion
+// ============================================================
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 
-  .headline,
-  .subtitle {
-    color: #00e5ff;
-    text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-  }
-
-  .contact-info {
-    margin-top: 1.5rem;
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-
-      v-icon {
-        color: #00e5ff;
-      }
-
-      a,
-      span {
-        color: #e0f7fa;
-        font-weight: 500;
-        text-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
-      }
-    }
+  html {
+    scroll-behavior: auto !important;
   }
 }

@@ -9,6 +9,9 @@
     "test:unit": "vitest --environment jsdom"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/space-grotesk": "^5.2.10",
+    "@fontsource/space-mono": "^5.2.9",
     "@mdi/font": "7.4.47",
     "@splinetool/loader": "^1.9.40",
     "@tsparticles/vue3": "^3.0.1",

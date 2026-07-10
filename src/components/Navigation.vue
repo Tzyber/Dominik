@@ -1,152 +1,207 @@
 <template>
-  <v-app-bar app :elevation="2" fixed>
-    <v-app-bar-nav-icon
-      v-if="mobile"
-      @click="drawer = !drawer"
-    />
-
-    <v-app-bar-title class="flex-grow-0 mr-4 app-title">
-      <span class="title-full">Dominik Dörrier</span>
-      <span class="title-short">DD</span>
-    </v-app-bar-title>
-
-    <v-spacer />
-
-    <template v-if="!mobile">
-      <v-btn
-        v-for="item in items"
-        :key="item.id"
-        exact
-        :to="{ path: '/', hash: `#${item.id}` }"
+  <header class="site-header">
+    <nav class="site-nav">
+      <router-link
+        class="brand"
+        to="/"
       >
-        {{ item.title }}
-      </v-btn>
+        Dominik<span>.</span>Dörrier
+      </router-link>
 
-      <v-btn
-        class="particle-toggle-btn"
-        :color="appStore.particleVisible ? 'primary' : 'default'"
-        variant="outlined"
-        @click="appStore.toggleParticles"
+      <button
+        :aria-expanded="menuOpen"
+        aria-label="Toggle menu"
+        class="navtoggle"
+        @click="menuOpen = !menuOpen"
       >
-        <v-icon start>{{ appStore.particleVisible ? 'mdi-weather-partly-cloudy' : 'mdi-weather-night' }}</v-icon>
-        Particles
-      </v-btn>
-    </template>
-  </v-app-bar>
+        MENU
+      </button>
 
-  <v-navigation-drawer
-    v-model="drawer"
-    app
-    temporary
-  >
-    <v-list>
-      <v-list-item
-        v-for="item in items"
-        :key="item.id"
-        :to="{ path: '/', hash: `#${item.id}` }"
-        @click="drawer = false"
+      <div
+        :class="['links', { open: menuOpen }]"
+        @click="onLinksClick"
       >
-        <v-list-item-title>{{ item.title }}</v-list-item-title>
-      </v-list-item>
+        <router-link
+          v-for="item in items"
+          :key="item.id"
+          :to="{ path: '/', hash: `#${item.id}` }"
+        >
+          {{ item.title }}
+        </router-link>
 
-      <v-list-item @click="appStore.toggleParticles">
-        <template #prepend>
-          <v-icon>{{ appStore.particleVisible ? 'mdi-weather-partly-cloudy' : 'mdi-weather-night' }}</v-icon>
-        </template>
-        <v-list-item-title>Particles {{ appStore.particleVisible ? 'ON' : 'OFF' }}</v-list-item-title>
-      </v-list-item>
+        <button
+          :aria-pressed="appStore.particleVisible"
+          class="stars-toggle"
+          type="button"
+          @click.stop="appStore.toggleParticles"
+        >
+          ✦ Stars {{ appStore.particleVisible ? 'on' : 'off' }}
+        </button>
 
-      <v-divider class="my-2" />
-
-      <v-list-item to="/impressum" @click="drawer = false">
-        <v-list-item-title>Impressum</v-list-item-title>
-      </v-list-item>
-      <v-list-item to="/datenschutz" @click="drawer = false">
-        <v-list-item-title>Datenschutz</v-list-item-title>
-      </v-list-item>
-    </v-list>
-  </v-navigation-drawer>
+        <router-link
+          class="legal-link"
+          to="/impressum"
+        >
+          Impressum
+        </router-link>
+        <router-link
+          class="legal-link"
+          to="/datenschutz"
+        >
+          Datenschutz
+        </router-link>
+      </div>
+    </nav>
+  </header>
 </template>
 
 <script setup lang="ts">
-  import { useAppStore } from '@/stores/app'
-  import { ref } from 'vue'
-  import { useDisplay } from 'vuetify'
+import { ref } from 'vue'
+import { useAppStore } from '@/stores/app'
 
-  const appStore = useAppStore()
-  const { mobile } = useDisplay()
-  const drawer = ref(false)
+const appStore = useAppStore()
+const menuOpen = ref(false)
 
-  const items = ref([
-    { title: 'Home', id: 'home' },
-    { title: 'About', id: 'about' },
-    { title: 'Skills', id: 'skills' },
-    { title: 'Projects', id: 'projects' },
-  ])
+const items = [
+  { title: 'Home', id: 'home' },
+  { title: 'About', id: 'about' },
+  { title: 'Skills', id: 'skills' },
+  { title: 'Projects', id: 'projects' }
+]
+
+const onLinksClick = (e: MouseEvent): void => {
+  if ((e.target as HTMLElement).tagName === 'A') {
+    menuOpen.value = false
+  }
+}
 </script>
 
 <style scoped>
-
-.app-title {
-  overflow: visible;
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, rgba(5, 7, 15, 0.82), rgba(5, 7, 15, 0.35));
+  border-bottom: 1px solid var(--hairline);
 }
-.title-short {
+
+.site-nav {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: 1.02rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--signal);
+}
+
+.links {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.links a,
+.stars-toggle {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-dim);
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.links a:hover,
+.links a:focus-visible,
+.stars-toggle:hover,
+.stars-toggle:focus-visible {
+  color: var(--ink);
+  background: var(--signal-soft);
+  outline: none;
+}
+
+.links a:focus-visible,
+.stars-toggle:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+}
+
+.legal-link {
   display: none;
 }
 
-/* Navigation Button Hover Animation */
-:deep(.v-btn) {
-  position: relative;
-  transition: all 0.3s ease-in-out;
-  border-bottom: 2px solid transparent;
-}
-.v-btn--variant-text .v-btn__overlay{
-  background-color: transparent !important;
+.navtoggle {
+  display: none;
 }
 
-:deep(.v-btn:not(.particle-toggle-btn):hover) {
-  border-bottom-color: rgba(83, 109, 254, 0.8);
-  box-shadow: 0 4px 12px rgba(83, 109, 254, 0.4),
-              inset 0 -2px 8px rgba(83, 109, 254, 0.3);
-  transform: translateY(-2px);
-}
-
-:deep(.v-btn:not(.particle-toggle-btn):active) {
-  transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(83, 109, 254, 0.3);
-}
-
-.particle-toggle-btn {
-  margin-left: 1rem;
-  border: 1px solid currentColor;
-  position: relative;
-  transition: all 0.3s ease-in-out;
-}
-
-.particle-toggle-btn:hover {
-  box-shadow: 0 0 20px rgba(255, 0, 150, 0.6),
-              0 0 40px rgba(83, 109, 254, 0.4),
-              inset 0 0 10px rgba(255, 0, 150, 0.2);
-  transform: translateY(-2px) scale(1.05);
-  border-color: rgba(255, 0, 150, 0.8);
-}
-
-.particle-toggle-btn:active {
-  transform: translateY(0) scale(1);
-  box-shadow: 0 0 10px rgba(255, 0, 150, 0.4);
-}
-
-.particle-toggle-btn :deep(.v-btn__overlay) {
-  opacity: 0.08 !important;
-}
-
-@media (max-width: 400px) {
-  .title-full {
+@media (max-width: 860px) {
+  .links {
     display: none;
   }
 
-  .title-short {
-    display: inline;
+  .links.open {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: var(--deep);
+    border-bottom: 1px solid var(--hairline);
+    padding: 10px 20px 18px;
+  }
+
+  .links.open .stars-toggle {
+    text-align: left;
+  }
+
+  .legal-link {
+    display: block;
+    border-top: 1px solid var(--hairline);
+    margin-top: 6px;
+    padding-top: 12px;
+  }
+
+  .legal-link + .legal-link {
+    border-top: 0;
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  .navtoggle {
+    display: block;
+    margin-left: auto;
+    background: none;
+    border: 1px solid var(--hairline);
+    border-radius: 8px;
+    color: var(--ink);
+    padding: 8px 12px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
   }
 }
 </style>

@@ -2,7 +2,8 @@ import { defineStore } from 'pinia'
 
 export const useAppStore = defineStore('app', {
   state: () => ({
-    particleVisible: localStorage.getItem('localParticles') === 'true',
+    // Stars are on by default; only an explicit opt-out disables them.
+    particleVisible: localStorage.getItem('localParticles') !== 'false',
   }),
   actions: {
     toggleParticles () {

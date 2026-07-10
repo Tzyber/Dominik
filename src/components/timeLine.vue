@@ -1,76 +1,107 @@
 <template>
-  <div>
-    <v-timeline
-      class="mt-8"
-      :direction="isLargeScreen ? 'horizontal' : 'vertical'"
+  <div class="timeline">
+    <div
+      v-for="event in timelineEvents"
+      :key="event.title"
+      :class="['tl-item', { now: event.now }]"
     >
-      <v-timeline-item
-        v-for="(event, index) in timelineEvents"
-        :key="index"
-        :dot-color="event.color"
-      >
-        <template #opposite>
-          <div>
-            <div class="text-h6">{{ event.title }}</div>
-            <p>{{ event.description }}</p>
-          </div>
-        </template>
+      <div class="tl-date">
         {{ event.date }}
-      </v-timeline-item>
-    </v-timeline>
+      </div>
+      <div class="tl-title">
+        {{ event.title }}
+      </div>
+      <div class="tl-desc">
+        {{ event.description }}
+      </div>
+    </div>
   </div>
 </template>
 
-<script lang="ts">
-  import { computed, defineComponent } from 'vue'
-  import { useDisplay } from 'vuetify'
-
-  export default defineComponent({
-    setup () {
-      const { mdAndUp } = useDisplay()
-      const isLargeScreen = computed(() => mdAndUp.value)
-
-      const timelineEvents = [
-        {
-          title: 'Ehemalig selbstständig',
-          description: 'Ehemalig selbstständig als Webdesigner und Entwickler',
-          date: 'bis 2018',
-          color: '#ff0096b3',
-        },
-        {
-          title: 'Mammut Media',
-          description: 'Webdesign und Entwicklung von Komponenten und Websites speziell für die Kunden.',
-          date: '2018-2019',
-          color: 'primary',
-        },
-        {
-          title: 'Docunite Gmbh',
-          description: 'Solution Developer (Webentwickler) für Docunite.',
-          date: '2020-2024',
-          color: '#ff0096b3',
-        },
-        {
-          title: 'Umschulung',
-          description: 'Umschulung zum Fachinformatiker in Anwendungsentwicklung',
-          date: '2025',
-          color: 'primary',
-        },
-        {
-          title: 'Zertifizierung',
-          description: 'SAP Foundation Level',
-          date: '2026',
-          color: '#ff0096b3',
-        },
-      ]
-
-      return {
-        isLargeScreen,
-        timelineEvents,
-      }
-    },
-  })
+<script setup lang="ts">
+const timelineEvents = [
+  {
+    title: 'Freelance',
+    description: 'Self-employed as web designer & developer.',
+    date: '— 2018',
+    now: false
+  },
+  {
+    title: 'Mammut Media',
+    description: 'Web design and component/site development for clients.',
+    date: '2018 – 2019',
+    now: false
+  },
+  {
+    title: 'Docunite GmbH',
+    description: 'Solution Developer (web development).',
+    date: '2020 – 2024',
+    now: false
+  },
+  {
+    title: 'Umschulung',
+    description: 'Fachinformatiker — Anwendungsentwicklung.',
+    date: '2025',
+    now: true
+  },
+  {
+    title: 'Certification',
+    description: 'SAP Foundation Level.',
+    date: '2026',
+    now: false
+  }
+]
 </script>
 
 <style scoped>
+.timeline {
+  margin-top: 8px;
+  border-left: 1px solid var(--hairline);
+  padding-left: 26px;
+}
 
+.tl-item {
+  position: relative;
+  padding-bottom: 26px;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -31px;
+  top: 6px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--deep);
+  border: 1px solid var(--signal);
+  box-shadow: 0 0 0 3px var(--void);
+}
+
+.tl-item.now::before {
+  background: var(--signal);
+  box-shadow: 0 0 12px var(--signal);
+}
+
+.tl-date {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--signal);
+}
+
+.tl-title {
+  font-weight: 600;
+  margin-top: 2px;
+  color: var(--ink);
+}
+
+.tl-desc {
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+}
 </style>
