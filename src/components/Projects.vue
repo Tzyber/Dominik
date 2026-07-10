@@ -65,7 +65,7 @@
     {
       num: 'P-03',
       title: 'Netflix Clone',
-      description: 'A Netflix UI recreation exploring layout, routing and responsive design across breakpoints.',
+      description: 'A Netflix UI recreation (Orbit) exploring layout, routing and responsive design across breakpoints.',
       image: projectImage3,
       links: [
         { text: 'Demo', url: 'https://tzyber.github.io/netflix-clone/' },
