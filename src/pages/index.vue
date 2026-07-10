@@ -2,7 +2,7 @@
   <div>
     <!-- HERO -->
     <section id="home" class="hero">
-      <div class="moon" aria-hidden="true" />
+      <div aria-hidden="true" class="moon" />
       <div class="wrap hero-grid">
         <div>
           <div class="telemetry">MISSION LOG · <b>51.26°N 7.15°E</b> · WUPPERTAL, DE</div>
@@ -82,79 +82,79 @@
       <div class="wrap">
         <Nebula />
         <h2>Still building.</h2>
-        <p>Web developer from Wuppertal — building for the web since 2018, with a lasting preference for clean, maintainable code.</p>
+        <p>Web developer from Wuppertal building for the web since 2018, with a lasting preference for clean, maintainable code.</p>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import me from '@/assets/me.png'
+  import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+  import { useRoute } from 'vue-router'
+  import me from '@/assets/me.png'
 
-const route = useRoute()
+  const route = useRoute()
 
-/* --- typewriter with rotating phrases --- */
-const typedText = ref('')
-const phrases = ['welcome to my portfolio', 'ts · vue · vuetify', 'clean code, considered UI']
-let timer: ReturnType<typeof setTimeout> | undefined
+  /* --- typewriter with rotating phrases --- */
+  const typedText = ref('')
+  const phrases = ['welcome to my portfolio', 'ts · vue · vuetify', 'clean code, considered UI']
+  let timer: ReturnType<typeof setTimeout> | undefined
 
-const startTyping = (): void => {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduce) {
-    typedText.value = phrases[0]
-    return
-  }
-  let p = 0
-  let i = 0
-  let del = false
-  const tick = (): void => {
-    const cur = phrases[p]
-    typedText.value = del ? cur.slice(0, i--) : cur.slice(0, i++)
-    if (!del && i > cur.length) {
-      del = true
-      timer = setTimeout(tick, 1400)
+  const startTyping = (): void => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) {
+      typedText.value = phrases[0]
       return
     }
-    if (del && i < 0) {
-      del = false
-      p = (p + 1) % phrases.length
-      i = 0
-      timer = setTimeout(tick, 300)
-      return
+    let p = 0
+    let i = 0
+    let del = false
+    const tick = (): void => {
+      const cur = phrases[p]
+      typedText.value = del ? cur.slice(0, i--) : cur.slice(0, i++)
+      if (!del && i > cur.length) {
+        del = true
+        timer = setTimeout(tick, 1400)
+        return
+      }
+      if (del && i < 0) {
+        del = false
+        p = (p + 1) % phrases.length
+        i = 0
+        timer = setTimeout(tick, 300)
+        return
+      }
+      timer = setTimeout(tick, del ? 45 : 85)
     }
-    timer = setTimeout(tick, del ? 45 : 85)
+    tick()
   }
-  tick()
-}
 
-const scrollToSection = (sectionId: string): void => {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' })
+  const scrollToSection = (sectionId: string): void => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
   }
-}
 
-onMounted(() => {
-  if (route.hash) {
-    scrollToSection(route.hash.slice(1))
-  }
-  startTyping()
-})
+  onMounted(() => {
+    if (route.hash) {
+      scrollToSection(route.hash.slice(1))
+    }
+    startTyping()
+  })
 
-onBeforeUnmount(() => {
-  clearTimeout(timer)
-})
+  onBeforeUnmount(() => {
+    clearTimeout(timer)
+  })
 
-watch(() => route.hash, newHash => {
-  if (newHash) {
-    scrollToSection(newHash.slice(1))
-  }
-})
+  watch(() => route.hash, newHash => {
+    if (newHash) {
+      scrollToSection(newHash.slice(1))
+    }
+  })
 </script>
 
-<style >
+<style>
 /* ---------- hero ---------- */
 .hero {
   min-height: min(84vh, 720px);
