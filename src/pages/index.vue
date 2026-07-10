@@ -41,11 +41,11 @@
           <div>
             <p class="lede">
               Years of hands-on web work, now <em>retraining</em> as a Fachinformatiker
-              for Anwendungsentwicklung — and still learning something new on every build.
+              for Anwendungsentwicklung and still learning something new on every build.
             </p>
             <div class="about-body">
               <p>I care about clean, maintainable code and interfaces that feel considered rather than decorated. My stack centres on TypeScript, Vue and Vuetify, with a growing eye for tooling, testing and the parts of a project people never see.</p>
-              <p>Before the retraining I worked as a freelance web designer and later as a solution developer — so I've shipped for real clients, not just for practice.</p>
+              <p>Before the retraining I worked as a freelance web designer and later as a solution developer so I've shipped for real clients, not just for practice.</p>
             </div>
           </div>
           <TimeLine />

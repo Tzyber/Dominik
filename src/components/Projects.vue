@@ -37,43 +37,43 @@
 </template>
 
 <script setup lang="ts">
-import projectImage1 from '@/assets/twitchbot.jpeg'
-import projectImage2 from '@/assets/portfolio.jpeg'
-import projectImage3 from '@/assets/netflix.jpeg'
+  import projectImage1 from '@/assets/twitchbot.jpeg'
+  import projectImage2 from '@/assets/portfolio.jpeg'
+  import projectImage3 from '@/assets/netflix.jpeg'
 
-const projects = [
-  {
-    num: 'P-01',
-    title: 'Twitch Chat Bot',
-    description: 'A Twitch chat bot that reacts to subscriptions, gifted subs and Bit cheers in real time — and doubles as a quiz bot for the stream.',
-    image: projectImage1,
-    links: [
-      { text: 'Code', url: 'https://github.com/Tzyber/twitchChatBot' }
-    ],
-    tags: ['JavaScript', 'Express']
-  },
-  {
-    num: 'P-02',
-    title: 'Portfolio',
-    description: 'This site. Built from scratch in Vue 3, Vuetify and TypeScript — an evolving playground where new ideas land first.',
-    image: projectImage2,
-    links: [
-      { text: 'Code', url: 'https://github.com/Tzyber/Dominik' }
-    ],
-    tags: ['TypeScript', 'Vue', 'Vuetify']
-  },
-  {
-    num: 'P-03',
-    title: 'Netflix Clone',
-    description: 'A Netflix UI recreation exploring layout, routing and responsive design across breakpoints.',
-    image: projectImage3,
-    links: [
-      { text: 'Demo', url: 'https://tzyber.github.io/netflix-clone/' },
-      { text: 'Code', url: 'https://github.com/Tzyber/netflix-clone' }
-    ],
-    tags: ['TypeScript', 'Tailwind', 'Vue']
-  }
-]
+  const projects = [
+    {
+      num: 'P-01',
+      title: 'Twitch Chat Bot',
+      description: 'A Twitch chat bot that reacts to subscriptions, gifted subs and Bit cheers in real time and doubles as a quiz bot for the stream.',
+      image: projectImage1,
+      links: [
+        { text: 'Code', url: 'https://github.com/Tzyber/twitchChatBot' },
+      ],
+      tags: ['JavaScript', 'Express'],
+    },
+    {
+      num: 'P-02',
+      title: 'Portfolio',
+      description: 'This site. Built from scratch in Vue 3, Vuetify and TypeScript an evolving playground where new ideas land first.',
+      image: projectImage2,
+      links: [
+        { text: 'Code', url: 'https://github.com/Tzyber/Dominik' },
+      ],
+      tags: ['TypeScript', 'Vue', 'Vuetify'],
+    },
+    {
+      num: 'P-03',
+      title: 'Netflix Clone',
+      description: 'A Netflix UI recreation exploring layout, routing and responsive design across breakpoints.',
+      image: projectImage3,
+      links: [
+        { text: 'Demo', url: 'https://tzyber.github.io/netflix-clone/' },
+        { text: 'Code', url: 'https://github.com/Tzyber/netflix-clone' },
+      ],
+      tags: ['TypeScript', 'Tailwind', 'Vue'],
+    },
+  ]
 </script>
 
 <style scoped>

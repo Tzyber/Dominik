@@ -19,38 +19,38 @@
 </template>
 
 <script setup lang="ts">
-const timelineEvents = [
-  {
-    title: 'Freelance',
-    description: 'Self-employed as web designer & developer.',
-    date: '— 2018',
-    now: false
-  },
-  {
-    title: 'Mammut Media',
-    description: 'Web design and component/site development for clients.',
-    date: '2018 – 2019',
-    now: false
-  },
-  {
-    title: 'Docunite GmbH',
-    description: 'Solution Developer (web development).',
-    date: '2020 – 2024',
-    now: false
-  },
-  {
-    title: 'Umschulung',
-    description: 'Fachinformatiker — Anwendungsentwicklung.',
-    date: '2025',
-    now: true
-  },
-  {
-    title: 'Certification',
-    description: 'SAP Foundation Level.',
-    date: '2026',
-    now: false
-  }
-]
+  const timelineEvents = [
+    {
+      title: 'Freelance',
+      description: 'Self-employed as web designer & developer.',
+      date: '— 2018',
+      now: false,
+    },
+    {
+      title: 'Mammut Media',
+      description: 'Web design and component/site development for clients.',
+      date: '2018 – 2019',
+      now: false,
+    },
+    {
+      title: 'Docunite GmbH',
+      description: 'Solution Developer (web development).',
+      date: '2020 – 2024',
+      now: false,
+    },
+    {
+      title: 'Umschulung',
+      description: 'Fachinformatiker Anwendungsentwicklung.',
+      date: '2025',
+      now: true,
+    },
+    {
+      title: 'Certification',
+      description: 'SAP Foundation Level.',
+      date: '2026',
+      now: false,
+    },
+  ]
 </script>
 
 <style scoped>
