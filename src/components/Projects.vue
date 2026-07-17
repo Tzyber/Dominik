@@ -40,10 +40,20 @@
   import projectImage1 from '@/assets/twitchbot.jpeg'
   import projectImage2 from '@/assets/portfolio.jpeg'
   import projectImage3 from '@/assets/netflix.jpeg'
-
+  import projectImage0 from '@/assets/protium_picture.png'
   const projects = [
     {
       num: 'P-01',
+      title: 'Protium',
+      description: 'A lightweight Linux desktop app for Steam/Proton housekeeping: library overview with ProtonDB ratings, GE-Proton version management, and clean error handling. Tauri v2 shell with a UI-free, fully tested core.',
+      image: projectImage0,
+      links: [
+        { text: 'Code', url: 'https://github.com/Tzyber/Protium' },
+      ],
+      tags: ['TypeScript', 'Vue', 'Rust', 'Tauri'],
+    },
+    {
+      num: 'P-02',
       title: 'Twitch Chat Bot',
       description: 'A Twitch chat bot that reacts to subscriptions, gifted subs and Bit cheers in real time and doubles as a quiz bot for the stream.',
       image: projectImage1,
@@ -53,7 +63,7 @@
       tags: ['JavaScript', 'Express'],
     },
     {
-      num: 'P-02',
+      num: 'P-03',
       title: 'Portfolio',
       description: 'This site. Built from scratch in Vue 3, Vuetify and TypeScript an evolving playground where new ideas land first.',
       image: projectImage2,
@@ -63,7 +73,7 @@
       tags: ['TypeScript', 'Vue', 'Vuetify'],
     },
     {
-      num: 'P-03',
+      num: 'P-04',
       title: 'Netflix Clone',
       description: 'A Netflix UI recreation (Orbit) exploring layout, routing and responsive design across breakpoints.',
       image: projectImage3,
